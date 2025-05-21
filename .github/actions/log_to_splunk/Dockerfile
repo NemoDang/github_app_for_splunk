@@ -1,5 +1,5 @@
 # Container image that runs your code
-FROM python:3-slim AS builder
+FROM python:3.11 AS builder
 
 # Copies your code file from your action repository to the filesystem path `/` of the container
 ADD . /app
