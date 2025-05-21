@@ -143,6 +143,10 @@ def main():
 
     # print("eventBatch:")
     # print(eventBatch)
+    print("SPLUNK_HEC_URL")
+    print(SPLUNK_HEC_URL)
+    print("headers")
+    print(headers)
     response=requests.post(SPLUNK_HEC_URL, data=eventBatch, headers=headers)
     
     print(response)
