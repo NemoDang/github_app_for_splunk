@@ -100,6 +100,8 @@ def main():
         print(f"::set-output name=result::{output}")
         return
 
+    print(x.content)
+
     z = zipfile.ZipFile(io.BytesIO(x.content))
     z.extractall('/app')
 
