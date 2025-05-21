@@ -2,7 +2,8 @@ name: Send Workflow Logs to Splunk
 
 # Controls when the action will run.
 on:
-  workflow_dispatch:
+  workflow_run:
+    workflows: ["*"]
 
 env:
   triggerID: ${{ github.event.workflow_run.id }}
