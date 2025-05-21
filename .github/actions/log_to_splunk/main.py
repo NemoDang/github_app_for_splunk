@@ -109,8 +109,8 @@ def main():
         filepath = os.path.join(folder_path, filename)
         if os.path.isfile(filepath):
             print(f"\n=== Contents of {filename} ===")
-            with open(filepath, 'r') as file:
-                print(file.read())
+            # with open(filepath, 'r') as file:
+            #     print(file.read())
 
     timestamp = batch = count = 0
 
