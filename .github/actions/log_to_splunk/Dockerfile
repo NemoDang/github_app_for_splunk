@@ -24,6 +24,5 @@ COPY . /app
 WORKDIR /app
 RUN chmod +x /app/main.py
 
-# Set the entrypoint
-ENV PYTHONPATH /app
-CMD ["/app/main.py"]
+# Use python interpreter explicitly (better than direct script execution)
+ENTRYPOINT ["python", "/app/main.py"]
