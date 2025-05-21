@@ -16,7 +16,7 @@ def main():
     GITHUB_WORKFLOWID=os.environ["INPUT_WORKFLOWID"]
     GITHUB_TOKEN = os.environ.get("INPUT_GITHUB-TOKEN")
 
-    SPLUNK_HEC_URL=os.environ["INPUT_SPLUNK-URL"]+"services/collector/event"
+    SPLUNK_HEC_URL=os.environ["INPUT_SPLUNK-URL"]
     SPLUNK_HEC_TOKEN=os.environ["INPUT_HEC-TOKEN"]
     SPLUNK_SOURCE=os.environ["INPUT_SOURCE"]
     SPLUNK_SOURCETYPE=os.environ["INPUT_SOURCETYPE"]
@@ -141,8 +141,6 @@ def main():
                     x=requests.post(SPLUNK_HEC_URL, data=eventBatch, headers=headers)
                     eventBatch=""
 
-    # print("eventBatch:")
-    # print(eventBatch)
     print("SPLUNK_HEC_URL")
     print(SPLUNK_HEC_URL)
     print("headers")
