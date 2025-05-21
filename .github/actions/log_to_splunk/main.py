@@ -127,7 +127,7 @@ def main():
                 x=x.strip()
                 job_name=re.search("\/\d+\_(?P<job>.*)\.txt",name)
                 job_name=job_name.group('job')
-                print(f"Job name: {job_name}")
+
                 fields = {'lineNumber':count,'workflowID':GITHUB_WORKFLOWID,'job':job_name}
                 if x:
                     batch+=1
@@ -141,9 +141,11 @@ def main():
                     x=requests.post(SPLUNK_HEC_URL, data=eventBatch, headers=headers)
                     eventBatch=""
 
-    print("eventBatch:")
-    print(eventBatch)
+    # print("eventBatch:")
+    # print(eventBatch)
     response=requests.post(SPLUNK_HEC_URL, data=eventBatch, headers=headers)
+    
+    print(response)
     if response.ok:
         print("Success!")
         print("Response JSON:", response.json())
