@@ -2,6 +2,7 @@ name: Send Workflow Logs to Splunk
 
 # Controls when the action will run.
 on:
+  workflow_dispatch:
   workflow_run:
     workflows: ["*"]
     types:
