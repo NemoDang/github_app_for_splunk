@@ -3,7 +3,9 @@ name: Send Workflow Logs to Splunk
 # Controls when the action will run.
 on:
   workflow_run:
-    workflows: ["*"]
+    workflows: ["Lint and App Inspect CLI"]
+    types:
+      - completed
 
 env:
   triggerID: ${{ github.event.workflow_run.id }}
