@@ -3,7 +3,9 @@ name: Send Workflow Logs to Splunk
 # Controls when the action will run.
 on:
   workflow_run:
-    workflows: ["Lint and App Inspect CLI"]
+    workflows:
+      - "Lint and App Inspect CLI"
+      - "CodeQL"
     types:
       - completed
 
