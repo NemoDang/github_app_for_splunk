@@ -141,16 +141,13 @@ def main():
                     x=requests.post(SPLUNK_HEC_URL, data=eventBatch, headers=headers)
                     eventBatch=""
 
-    print("SPLUNK_HEC_URL")
-    print(SPLUNK_HEC_URL)
-    print("headers")
-    print(headers)
+    print("data:")
+    print(eventBatch)
     response=requests.post(SPLUNK_HEC_URL, data=eventBatch, headers=headers)
     
     print(response)
     if response.ok:
-        print("Success!")
-        print("Response JSON:", response.json())
+        print("Logs forwarding successfully!")
     else:
         print("Error:", response.status_code)
         print("Error details:", response.text)
