@@ -109,7 +109,7 @@ def main():
         logfile = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), name.replace('./','')),'r')
         Lines = logfile.readlines()
         for line in Lines:
-            print(line)
+            # print(line)
 
             if line:
                 count+=1
@@ -128,19 +128,23 @@ def main():
                 x=x.strip()
                 job_name=re.search("\/\d+\_(?P<job>.*)\.txt",name)
                 job_name=job_name.group('job')
+                print(f"Job name: {job_name}")
                 fields = {'lineNumber':count,'workflowID':GITHUB_WORKFLOWID,'job':job_name}
                 if x:
                     batch+=1
                     event={'event':x,'sourcetype':SPLUNK_SOURCETYPE,'source':SPLUNK_SOURCE,'host':host,'time':timestamp,'fields':fields}
                     eventBatch=eventBatch+json.dumps(event)
+                    print(f"eventBatch: {eventBatch}")
                 else:
                     print("skipped line "+str(count))
 
                 if batch>=1000:
+                    print("batch>=1000")
                     batch=0
                     x=requests.post(SPLUNK_HEC_URL, data=eventBatch, headers=headers)
                     eventBatch=""
 
+    print("here?")
     x=requests.post(SPLUNK_HEC_URL, data=eventBatch, headers=headers)
 
 if __name__ == '__main__':
