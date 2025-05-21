@@ -100,10 +100,17 @@ def main():
         print(f"::set-output name=result::{output}")
         return
 
-    print(x.content)
-
     z = zipfile.ZipFile(io.BytesIO(x.content))
     z.extractall('/app')
+
+    folder_path = '/app'  # Change this to your folder path
+
+    for filename in os.listdir(folder_path):
+        filepath = os.path.join(folder_path, filename)
+        if os.path.isfile(filepath):
+            print(f"\n=== Contents of {filename} ===")
+            with open(filepath, 'r') as file:
+                print(file.read())
 
     timestamp = batch = count = 0
 
