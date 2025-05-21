@@ -143,8 +143,13 @@ def main():
 
     print("eventBatch:")
     print(eventBatch)
-    x=requests.post(SPLUNK_HEC_URL, data=eventBatch, headers=headers)
-    print(x.content)
+    response=requests.post(SPLUNK_HEC_URL, data=eventBatch, headers=headers)
+    if response.ok:
+        print("Success!")
+        print("Response JSON:", response.json())
+    else:
+        print("Error:", response.status_code)
+        print("Error details:", response.text)
 
 if __name__ == '__main__':
     main()
