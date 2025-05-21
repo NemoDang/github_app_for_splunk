@@ -109,7 +109,6 @@ def main():
         logfile = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), name.replace('./','')),'r')
         Lines = logfile.readlines()
         for line in Lines:
-            # print(line)
 
             if line:
                 count+=1
@@ -134,18 +133,18 @@ def main():
                     batch+=1
                     event={'event':x,'sourcetype':SPLUNK_SOURCETYPE,'source':SPLUNK_SOURCE,'host':host,'time':timestamp,'fields':fields}
                     eventBatch=eventBatch+json.dumps(event)
-                    print(f"eventBatch: {eventBatch}")
                 else:
                     print("skipped line "+str(count))
 
                 if batch>=1000:
-                    print("batch>=1000")
                     batch=0
                     x=requests.post(SPLUNK_HEC_URL, data=eventBatch, headers=headers)
                     eventBatch=""
 
-    print("here?")
+    print("eventBatch:")
+    print(eventBatch)
     x=requests.post(SPLUNK_HEC_URL, data=eventBatch, headers=headers)
+    print(x.content)
 
 if __name__ == '__main__':
     main()
