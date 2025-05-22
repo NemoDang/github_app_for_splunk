@@ -1,4 +1,4 @@
-FROM python:3.9-slim
+FROM registry.access.redhat.com/ubi8/python-39
 
 # Fix the ENV format warning
 ENV PYTHONUNBUFFERED=1
