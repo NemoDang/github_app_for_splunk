@@ -1,7 +1,5 @@
 FROM registry.access.redhat.com/ubi8/python-39
-
-# Fix the ENV format warning
-ENV PYTHONUNBUFFERED=1
+USER root
 
 RUN pip install --no-cache-dir requests
 
