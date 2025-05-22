@@ -73,6 +73,9 @@ def main():
     event={'event':json.dumps(summary),'sourcetype':SPLUNK_SOURCETYPE,'source':'workflow_summary','host':host,'time':epoch_time}
     event=json.dumps(event)
 
+    print("event:")
+    print(event)
+
     x=requests.post(SPLUNK_HEC_URL, data=event, headers=headers)
 
 
