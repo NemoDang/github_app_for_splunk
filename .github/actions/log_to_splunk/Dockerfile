@@ -7,6 +7,5 @@ RUN pip install --no-cache-dir requests
 
 COPY . /app
 WORKDIR /app
-RUN chmod +x main.py
 
 ENTRYPOINT ["python", "/app/main.py"]
