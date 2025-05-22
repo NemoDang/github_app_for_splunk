@@ -55,6 +55,9 @@ def main():
         print("Internal error", e)
         return x.status_code
 
+    print(f"Status Code: {x.status_code}")
+    print(f"Response Content-Type: {x.headers.get('Content-Type')}")
+
     summary = x.json()
 
     summary.pop('repository')
